@@ -21,5 +21,6 @@ if [[ ${TRAVIS_OS_NAME} == "linux" ]]; then
 else
   export DISPLAY=:99.0
   ( sudo Xvfb :99 -ac -screen 0 1280x1024x24; echo ok )&
+  glxinfo
   npm test
 fi
