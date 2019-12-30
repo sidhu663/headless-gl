@@ -2,7 +2,7 @@
 set -o pipefail
 
 if [[ ${TRAVIS_OS_NAME} == "osx" ]]; then
-  sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+  sudo installer -allowUntrusted -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
 
   brew install nvm
   mkdir ~/.nvm
