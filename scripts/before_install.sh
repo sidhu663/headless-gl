@@ -9,6 +9,8 @@ if [[ ${TRAVIS_OS_NAME} == "osx" ]]; then
   echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.bashrc
   echo "[ -s \"/usr/local/opt/nvm/nvm.sh\" ] && . \"/usr/local/opt/nvm/nvm.sh\"" >> ~/.bashrc
 
+  brew install mesa
+
   brew cask reinstall xquartz
 
   sudo defaults write org.macosforge.xquartz.X11 enable_iglx -bool true
