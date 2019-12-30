@@ -11,6 +11,8 @@ if [[ ${TRAVIS_OS_NAME} == "osx" ]]; then
 
   brew cask reinstall xquartz
 
+  defaults write org.macosforge.xquartz.X11 enable_iglx -bool true
+
   # brew install pkg-config
 
   # git clone https://github.com/XQuartz/xorg-server.git
