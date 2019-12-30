@@ -12,7 +12,7 @@ if [[ ${TRAVIS_OS_NAME} == "osx" ]]; then
 
   brew install pkg-config
 
-  git clone git@github.com:XQuartz/xorg-server.git
+  git clone https://github.com/XQuartz/xorg-server.git
   cd xorg-server
 
   export ACLOCAL="aclocal -I /opt/X11/share/aclocal -I /usr/local/share/aclocal"
