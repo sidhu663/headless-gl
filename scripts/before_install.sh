@@ -8,6 +8,8 @@ if [[ ${TRAVIS_OS_NAME} == "osx" ]]; then
   echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.bashrc
   echo "[ -s \"/usr/local/opt/nvm/nvm.sh\" ] && . \"/usr/local/opt/nvm/nvm.sh\"" >> ~/.bashrc
 
+  brew cask install xquartz
+
   # brew install pkg-config
 
   # git clone https://github.com/XQuartz/xorg-server.git
