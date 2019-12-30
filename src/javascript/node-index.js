@@ -48,7 +48,7 @@ function createContext (width, height, options) {
       contextAttributes.preferLowPowerToHighPerformance,
       contextAttributes.failIfMajorPerformanceCaveat)
   } catch (e) {
-      throw e
+    throw e
   }
 
   if (!ctx) {
