@@ -19,5 +19,6 @@ if [[ ${TRAVIS_OS_NAME} == "linux" ]]; then
   xvfb-run --auto-servernum --server-num=1 -s "-ac -screen 0 1280x1024x24" `which glxinfo`
   xvfb-run --auto-servernum --server-num=1 -s "-ac -screen 0 1280x1024x24" `which npm` test
 else
+  if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ( sudo Xvfb :99 -ac -screen 0 1400x900x24 +render +iglx; echo ok )& fi;
   npm test
 fi
