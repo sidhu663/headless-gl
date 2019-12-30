@@ -2,13 +2,14 @@
 set -o pipefail
 
 if [[ ${TRAVIS_OS_NAME} == "osx" ]]; then
+  brew update
   brew install nvm
   mkdir ~/.nvm
   touch ~/.bashrc
   echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.bashrc
   echo "[ -s \"/usr/local/opt/nvm/nvm.sh\" ] && . \"/usr/local/opt/nvm/nvm.sh\"" >> ~/.bashrc
 
-  brew cask install xquartz
+  brew cask reinstall xquartz
 
   # brew install pkg-config
 
