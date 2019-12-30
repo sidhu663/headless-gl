@@ -15,7 +15,7 @@ if [[ ${TRAVIS_OS_NAME} == "osx" ]]; then
 
   export ACLOCAL="aclocal -I /opt/X11/share/aclocal -I /usr/local/share/aclocal"
   export PKG_CONFIG_PATH="/opt/X11/share/pkgconfig:/opt/X11/lib/pkgconfig"
-  export CFLAGS="-Wall -O0 -ggdb3 -arch i386 -arch x86_64 -pipe"
+  export CFLAGS="-Wall -O0 -ggdb3 -arch x86_64 -pipe"
   export OBJCFLAGS=$CFLAGS
   export LDFLAGS=$CFLAGS
 
