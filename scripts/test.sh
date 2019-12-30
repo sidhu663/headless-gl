@@ -20,7 +20,7 @@ if [[ ${TRAVIS_OS_NAME} == "linux" ]]; then
   xvfb-run --auto-servernum --server-num=1 -s "-ac -screen 0 1280x1024x24" `which npm` test
 else
   export DISPLAY=:99.0
-  ( sudo Xvfb :99 -ac -screen 0 1280x1024x24 +render +iglx; echo ok )&
+  ( sudo Xvfb :99 -ac -screen 0 1280x1024x24  +extension GLX +render; echo ok )&
   glxinfo
   npm test
 fi
