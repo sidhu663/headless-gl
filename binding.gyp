@@ -33,6 +33,7 @@
               'angle/src/angle.gyp:libGLESv2'
             ],
             'libraries': [
+                '-framework OpenGL',
                 '-framework QuartzCore',
                 '-framework Quartz'
             ],
