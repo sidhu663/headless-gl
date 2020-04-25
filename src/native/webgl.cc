@@ -11,7 +11,7 @@ WebGLRenderingContext* WebGLRenderingContext::CONTEXT_LIST_HEAD = NULL;
 
 const char* REQUIRED_EXTENSIONS[] = {
   "GL_OES_packed_depth_stencil",
-  "GL_ANGLE_instanced_arrays",
+  // "GL_ANGLE_instanced_arrays",
   NULL
 };
 
@@ -169,6 +169,13 @@ void WebGLRenderingContext::setError(GLenum error) {
   if (prevError == GL_NO_ERROR) {
     lastError = error;
   }
+}
+
+bool WebGLRenderingContext::checkAngleInstancedArraysSupportInternal() {
+  const char *extensions = reinterpret_cast<const char*>(
+    glGetString(GL_EXTENSIONS));
+
+  return strstr(extensions, "GL_ANGLE_instanced_arrays");
 }
 
 void WebGLRenderingContext::dispose() {
@@ -2055,6 +2062,12 @@ GL_METHOD(GetExtension) {
   GL_BOILERPLATE;
 
   //TODO
+}
+
+GL_METHOD(CheckAngleInstancedArraysSupport) {
+  GL_BOILERPLATE;
+
+  info.GetReturnValue().Set(Nan::New<v8::Boolean>((inst->checkAngleInstancedArraysSupportInternal)()));
 }
 
 GL_METHOD(CheckFramebufferStatus) {

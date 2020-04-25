@@ -1188,9 +1188,8 @@ class WebGLRenderingContext extends NativeWebGLRenderingContext {
 
   getSupportedExtensions () {
     const exts = [
-      'ANGLE_instanced_arrays',
       'STACKGL_resize_drawingbuffer',
-      'STACKGL_destroy_context'
+      'STACKGL_destroy_context',
     ]
 
     const supportedExts = super.getSupportedExtensions()
@@ -1209,6 +1208,10 @@ class WebGLRenderingContext extends NativeWebGLRenderingContext {
 
     if (supportedExts.indexOf('EXT_draw_buffers') >= 0) {
       exts.push('WEBGL_draw_buffers')
+    }
+
+    if( supportedExts.indexOf('GL_ANGLE_instanced_arrays') > 0) {
+      exts.push('ANGLE_instanced_arrays')
     }
 
     return exts
@@ -2177,13 +2180,17 @@ class WebGLRenderingContext extends NativeWebGLRenderingContext {
       case gl.TEXTURE_BINDING_CUBE_MAP:
         return this._getActiveTextureUnit()._bindCube
       case gl.VERSION:
-        return 'WebGL 1.0 stack-gl ' + HEADLESS_VERSION
+        //return 'WebGL 1.0 stack-gl ' + HEADLESS_VERSION
+        return super.getParameter(pname)
       case gl.VENDOR:
-        return 'stack-gl'
+        return super.getParameter(pname)
+        //return 'stack-gl'
       case gl.RENDERER:
-        return 'ANGLE'
+        return super.getParameter(pname)
+        //return 'ANGLE'
       case gl.SHADING_LANGUAGE_VERSION:
-        return 'WebGL GLSL ES 1.0 stack-gl'
+        //return 'WebGL GLSL ES 1.0 stack-gl'
+        return super.getParameter(pname)
 
       case gl.COMPRESSED_TEXTURE_FORMATS:
         return new Uint32Array(0)
