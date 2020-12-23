@@ -1214,7 +1214,7 @@ class WebGLRenderingContext extends NativeWebGLRenderingContext {
       exts.push('ANGLE_instanced_arrays')
     }
 
-    return exts
+    return [...exts, ...supportedExts]
   }
 
   setError (error) {
