@@ -9,6 +9,7 @@ const { getOESTextureFloat } = require('./extensions/oes-texture-float')
 const { getSTACKGLDestroyContext } = require('./extensions/stackgl-destroy-context')
 const { getSTACKGLResizeDrawingBuffer } = require('./extensions/stackgl-resize-drawing-buffer')
 const { getWebGLDrawBuffers } = require('./extensions/webgl-draw-buffers')
+const { getWebGLColorBufferFloat } = require('./extensions/webgl-color-buffer-float')
 const {
   bindPublics,
   checkObject,
@@ -57,7 +58,8 @@ const availableExtensions = {
   oes_standard_derivatives: getOESStandardDerivatives,
   stackgl_destroy_context: getSTACKGLDestroyContext,
   stackgl_resize_drawingbuffer: getSTACKGLResizeDrawingBuffer,
-  webgl_draw_buffers: getWebGLDrawBuffers
+  webgl_draw_buffers: getWebGLDrawBuffers,
+  webgl_color_buffer_float: getWebGLColorBufferFloat
 }
 
 const privateMethods = [
@@ -1214,7 +1216,11 @@ class WebGLRenderingContext extends NativeWebGLRenderingContext {
       exts.push('ANGLE_instanced_arrays')
     }
 
-    return [...exts, ...supportedExts]
+    if( supportedExts.indexOf('GL_EXT_color_buffer_float') > 0) {
+      exts.push('WEBGL_color_buffer_float')
+    }
+
+    return exts
   }
 
   setError (error) {
