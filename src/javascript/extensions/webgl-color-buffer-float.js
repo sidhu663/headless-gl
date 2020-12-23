@@ -2,8 +2,8 @@ const { gl } = require('../native-gl')
 
 class WebGLColorBufferFloat {
     constructor() {
-        this.RGBA32F_EXT = gl.FLOAT
-        this.RGB32F_EXT = gl.FLOAT
+        this.RGBA32F_EXT = gl.RGBA
+        this.RGB32F_EXT = gl.RGB
     }
 }
 
