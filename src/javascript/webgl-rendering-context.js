@@ -3216,7 +3216,7 @@ class WebGLRenderingContext extends NativeWebGLRenderingContext {
     super.texImage2D(
       target,
       level,
-      marshalInternalFormat(type, internalFormat),
+      this._marshalInternalFormat(type, internalFormat),
       width,
       height,
       border,
