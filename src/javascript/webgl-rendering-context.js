@@ -573,6 +573,19 @@ class WebGLRenderingContext extends NativeWebGLRenderingContext {
     return false
   }
 
+  _marshalInternalFormat(type, format) {
+    if (this._extensions.webgl_color_buffer_float && type === gl.FLOAT) {
+      switch (format) {
+        case gl.RGBA:
+          return this._extensions.webgl_color_buffer_float.RGBA32F_EXT
+        default:
+          return this._extensions.webgl_color_buffer_float.RGB32F_EXT
+      }
+    } else {
+      return format
+    }
+  }
+
   _resizeDrawingBuffer (width, height) {
     const prevFramebuffer = this._activeFramebuffer
     const prevTexture = this._getActiveTexture(gl.TEXTURE_2D)
@@ -3203,7 +3216,7 @@ class WebGLRenderingContext extends NativeWebGLRenderingContext {
     super.texImage2D(
       target,
       level,
-      internalFormat,
+      marshalInternalFormat(type, internalFormat),
       width,
       height,
       border,
